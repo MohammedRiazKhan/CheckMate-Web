@@ -30,7 +30,7 @@
 
     <div class="row card" style="padding: 30px">
         <!-- Form -->
-        <form>
+        <form action="/run" method="POST">
             <div class="form-group">
                 <label for="endpoint" class="card-title">Instance Endpoint or IP</label>
                 <input type="text" class="form-control" id="endpoint" placeholder="enter instance endpoint or IP" name="endpoint">
@@ -39,19 +39,19 @@
             <label style="margin-top: 20px">Select tests to perform:</label>
             <div class="form-group form-check">
                 <div style="float: left; margin-left: 5px">
-                    <input type="checkbox" name="ping">
+                    <input type="checkbox" name="checks" value="ping">
                     <label>ping</label>
                 </div>
                 <div style="float: left; margin-left: 20px">
-                    <input type="checkbox" name="traceroute">
+                    <input type="checkbox" name="checks" value="traceroute">
                     <label>traceroute</label>
                 </div>
                 <div style="float: left; margin-left: 20px; margin-right: 20px">
-                    <input type="checkbox" name="telnet" id="telnet">
+                    <input type="checkbox" name="checks" value="telnet" id="telnet">
                     <label>telnet</label>
                 </div>
                 <div style="margin-left: 20px">
-                    <input type="checkbox" name="nslookup">
+                    <input type="checkbox" name="checks" value="nslookup">
                     <label>nslookup</label>
                 </div>
             </div>
