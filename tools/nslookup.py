@@ -1,6 +1,5 @@
 import subprocess
 import re
-from checkmate import instance
 
 def name_to_ip(address):
     # Run command, for Endpoint to determine if it resolves to IP

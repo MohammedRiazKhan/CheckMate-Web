@@ -1,21 +1,16 @@
 from flask import Flask
 from flask import jsonify
-from tools import instance_ping as ping
+from tools import ping
+from tools import nslookup
+from tools import telnet
+from tools import traceroute
+from flask import render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../web/templates")
 
-ip = '127.0.0.1'
-
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def hello():
-
-    ping_output = ping.test_ping(ip)
-
-    return jsonify({'ping_result': ping_output})
-
-@app.route("/ping/{ip}", methods=['POST'])
-def perform_ping():
-    return ""
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,8 +1,7 @@
 import subprocess
 from sys import platform as _platform
-from tools import instance_nslookup as nslookup
+from tools import nslookup
 import re
-from checkmate import instance
 
 def trace_route_of_instance(destination):
     if _platform == "linux" or _platform == "linux2":
