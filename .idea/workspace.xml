@@ -1,30 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3799af7e-99a3-469f-9a5d-4509d51077da" name="Default Changelist" comment="Added HTML Templates for Views">
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/js/bootstrap/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/js/bootstrap/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/js/jquery/jquery-3.4.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/js/jquery/jquery-3.4.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/js/jquery/jquery-3.4.1.min.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/static/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/templates/results.html" afterDir="false" />
+    <list default="true" id="3799af7e-99a3-469f-9a5d-4509d51077da" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/checkmate.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/checkmate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/ping.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/traceroute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/traceroute.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,6 +25,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="benito" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Tuok0kcAouDoP0NqXNHsJjjM6J" />
@@ -114,6 +100,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.checkmate" />
+        <item itemvalue="Python.checkmate" />
+        <item itemvalue="Python.checkmate" />
+        <item itemvalue="Python.checkmate" />
+        <item itemvalue="Python.checkmate" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574319481217</updated>
       <workItem from="1574319487810" duration="6496000" />
-      <workItem from="1574326784516" duration="3457000" />
+      <workItem from="1574326784516" duration="9896000" />
     </task>
     <task id="LOCAL-00001" summary="Added Network tools">
       <created>1574326187387</created>
@@ -144,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574327111144</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added HTML Templates for Views">
+      <created>1574331654806</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574331654806</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +167,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added HTML Templates for Views" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CheckMateAPI$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574328546147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
+    <SUITE FILE_PATH="coverage/CheckMateAPI$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574340074839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
   </component>
 </project>

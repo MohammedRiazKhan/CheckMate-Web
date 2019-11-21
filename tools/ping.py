@@ -1,6 +1,6 @@
 import subprocess
 
-def test_ping(host):
+def perform_ping(host):
 
     output = subprocess.run(['ping', host], capture_output=True, text=True)
 
