@@ -2,6 +2,7 @@ import subprocess
 from sys import platform as _platform
 from tools import nslookup
 import re
+import ipaddress
 
 def trace_route_of_instance(destination):
     if _platform == "linux" or _platform == "linux2":
@@ -59,6 +60,12 @@ def analyse_trace_route(endpoint, parsed_output_arr):
     else:
         return "Traceroute unsuccessful"
 
+def is_public_ip(ip):
+    if not ipaddress.ip_address(ip).is_private:
+        return True
+    else:
+        return False
+
 def is_first_hop_default_gateway(endpoint, parsed_output_arr):
 
     # perform an nslookup on loopback (get ip from loopback response)
@@ -90,7 +97,7 @@ def find_public_ip_in_trace(parsed_output_arr):
     keep_looping = True
     while keep_looping:
         # once a valid public ip is found, break out of loop and return true
-        if instance.is_public_ip(valid_ip[0]):
+        if is_public_ip(valid_ip[0]):
             keep_looping = False
             return True
         else:
