@@ -23,7 +23,8 @@
             <img src="../static/images/aws_logo.png" alt="aws_forums_logo" width="300px" height="150px">
         </div>
         <div style="float: left; margin-top: 50px">
-            <h3>EC2/RDS Sanity Check for the AWS Forums</h3>
+            <h3>AWS Forums - EC2 & RDS Sanity Check </h3>
+            <p style="color: gray">A sanity check to help diagnose common issues with your EC2 & RDS instances.</p>
         </div>
     </div>
 
@@ -32,10 +33,10 @@
         <form>
             <div class="form-group">
                 <label for="endpoint" class="card-title">Instance Endpoint or IP</label>
-                <input type="text" class="form-control" id="endpoint" placeholder="Enter Endpoint or Public IP" name="endpoint">
+                <input type="text" class="form-control" id="endpoint" placeholder="enter instance endpoint or IP" name="endpoint">
             </div>
 
-            <label style="margin-top: 20px">Select the tests to perform:</label>
+            <label style="margin-top: 20px">Select tests to perform:</label>
             <div class="form-group form-check">
                 <div style="float: left; margin-left: 5px">
                     <input type="checkbox" name="ping">
@@ -70,9 +71,9 @@
                 </div>
             </div>
             <div style="margin-top: 30px">
-                <button type="submit" class="btn btn-primary" onsubmit="unhide_progress_bar()">Analyse</button>
+                <button type="submit" class="btn btn-primary" onclick="unhide_progress_bar()">Analyse</button>
             </div>
-            <div style="margin-top: 40px; display: block" id="progress_bar">
+            <div style="margin-top: 40px; display: none" id="progress_bar">
                  <p>Running test 1 of x</p>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
