@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<title>Check Mate</title>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,10 +11,82 @@
     <link rel="stylesheet" type="text/css" href="../static/css/main.css">
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap/bootstrap.css">
 
-    <title>Check Mate</title>
+
 </head>
 <body>
+<!--Main Container-->
+<div class = 'container' style="align-content: center" style="padding: auto">
 
+<!-- Input Container   -->
+    <div class = 'container'>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class = 'form-group'>
+                    <form>
+                        <label for="email">Enter Endpoint/IP:</label>
+                        <input type="email" class="form-control" id="email" placeholder="IP Address/Endpoint" name="IP">
+
+                    </form>
+                </div>
+
+            </div>
+    </div>
+
+
+    <!-- CheckBox Container   -->
+    <div class="card" style="padding-left: 40%" >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 5%">
+
+                <table>
+
+                    <div class="column">
+                          <input type="checkbox" name="Ping" value="Ping"> Ping<br>
+                          <input type="checkbox" name="Traceroute" value="Traceroute"> Traceroute<br>
+                    </div>
+
+
+                    <div class="column" >
+                      <input type="checkbox" name="Telnet" value="Telnet"> Telnet <br>
+                      <input type="checkbox" name="Nslookup" value="Nslookup"> Nslookup <br>
+                    </div>
+
+                </table>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+<!-- Progress Bar Container   -->
+    <div class = "container-fluid" align="center">
+            <div>
+            <h3 style="padding-top: 5%"> Test in progress: </h3>
+            </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 5%" >
+
+          <div class="progress" style="width: 350px" >
+
+                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                      aria-valuemin="0" aria-valuemax="100" style="width:20%" style="padding-top: 20%">
+
+                      </div>
+
+                </div>
+        </div>
+    </div>
+
+<!-- Button Container   -->
+    <div class="container-fluid" align="center" style="margin-top: 5%">
+            <button class="btn btn-primary" type="submit">
+                Analyse
+            </button>
+    </div>
+
+</div>
+</body>
 
     <!-- Scripts -->
     <script src="../static/js/main.js"></script>

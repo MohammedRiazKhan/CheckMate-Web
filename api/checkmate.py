@@ -8,10 +8,12 @@ from flask import render_template
 
 app = Flask(__name__, template_folder="../web/templates", static_folder="../web/static")
 
+
 # Home Page
 @app.route("/")
 def hello():
     return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
