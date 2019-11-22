@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from tools import ping, telnet, traceroute, nslookup
+from tools import ping, telnet, traceroute, nslookup, instance
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
@@ -11,8 +11,19 @@ def hello():
 @app.route("/run", methods=['POST'])
 def all_tests():
     if request.method == 'POST':
+
         checks_to_run = request.form.getlist('checks')
         endpoint = request.form['endpoint']
+
+        if endpoint == '':
+            return render_template('index.html', endpoint_message="Please enter an IP or Endpoint")
+        if not instance.valid_ip(endpoint):
+            return render_template('index.html', endpoint_message="Please enter a valid IP")
+        if instance.is_public_ip(endpoint):
+            return render_template('index.html', endpoint_message="Please enter a valid public IP")
+
+        if len(checks_to_run) == 0:
+            return render_template('index.html', checkbox_message="Please select at least one test to run")
 
         ping_out = []
         trace_out = []

@@ -36,6 +36,11 @@
             <div class="form-group">
                 <label for="endpoint" class="card-title">Instance Endpoint or IP</label>
                 <input type="text" class="form-control" id="endpoint" placeholder="enter instance endpoint or IP" name="endpoint">
+                {% if endpoint_message %}
+                <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                    {{endpoint_message}}
+                </div>
+                {% endif %}
             </div>
 
             <label style="margin-top: 20px">Select tests to perform:</label>
@@ -56,6 +61,11 @@
                     <input type="checkbox" name="checks" value="nslookup">
                     <label>nslookup</label>
                 </div>
+                {% if checkbox_message %}
+                    <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                        {{checkbox_message}}
+                    </div>
+                {% endif %}
             </div>
             <div id="port_numbers" class="form-group" style="display: none; margin-top: 20px">
                 <div class="form-group" >
