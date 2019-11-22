@@ -23,13 +23,13 @@ def all_tests():
             if checks_to_run[i] == 'ping':
                 ping_out = ping.perform_ping(endpoint)
             elif checks_to_run[i] == 'traceroute':
-                print('running traceroute')
+                trace_out = traceroute.trace_route_of_instance(endpoint)
             elif checks_to_run[i] == 'nslookup':
-                print('running nslookup')
+                ns_out = nslookup.name_to_ip(endpoint)
             elif checks_to_run[i] == 'telnet':
-                print('running telnet')
+                tel_out = telnet.check_if_port_open(host=endpoint, port=22)
 
-    return render_template('index.html', ping_output=ping_out)
+    return render_template('index.html', ping_output=ping_out, telnet_output=tel_out, traceroute_output=trace_out, nslookup_output=ns_out)
 
 @app.route("/ping", methods=['POST'])
 def ping_host():
