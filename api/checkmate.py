@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from tools import ping, telnet, traceroute, nslookup
 
-app = Flask(__name__, template_folder="../web/templates", static_folder="../web/static")
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 # Home Page
 @app.route("/")

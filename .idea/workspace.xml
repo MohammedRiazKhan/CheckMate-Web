@@ -2,12 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3799af7e-99a3-469f-9a5d-4509d51077da" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CheckMateAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CheckMateAPI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pyvenv.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/checkmate.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/checkmate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-grid.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-grid.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-grid.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-grid.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-reboot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-reboot.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-reboot.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap-reboot.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/bootstrap/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap/bootstrap.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/images/aws_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/aws_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/bootstrap/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/bootstrap/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/bootstrap/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/jquery/jquery-3.4.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/jquery/jquery-3.4.1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/jquery/jquery-3.4.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/jquery/jquery-3.4.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/jquery/jquery-3.4.1.min.map" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/jquery/jquery-3.4.1.min.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/static/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,17 +69,18 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web\static" />
-      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web" />
-      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web\pages" />
-      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\tools" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Mohammed Riaz Khan\PycharmProjects\CheckMate-Web\web\static\images" />
       <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web\static\js\jquery" />
       <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web\static\js\bootstrap" />
       <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web\static\css\bootstrap" />
+      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\tools" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI" />
+      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web\static" />
+      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web" />
+      <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\web\pages" />
       <recent name="C:\Users\mkkhanox\PycharmProjects\CheckMateAPI\tools" />
     </key>
   </component>
@@ -125,7 +145,7 @@
       <workItem from="1574356594842" duration="4106000" />
       <workItem from="1574360859095" duration="367000" />
       <workItem from="1574361251697" duration="1511000" />
-      <workItem from="1574397441691" duration="2387000" />
+      <workItem from="1574397441691" duration="2747000" />
     </task>
     <task id="LOCAL-00001" summary="Added Network tools">
       <created>1574326187387</created>
@@ -148,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574331654806</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Client-side Validation">
+      <created>1574401001722</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574401001722</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,10 +198,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added Network tools" />
     <MESSAGE value="Added HTML Templates for Views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added HTML Templates for Views" />
+    <MESSAGE value="Client-side Validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client-side Validation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CheckMate_Web$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574362158147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
-    <SUITE FILE_PATH="coverage/CheckMateAPI$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574397482226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
+    <SUITE FILE_PATH="coverage/CheckMateAPI$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574401320476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
   </component>
 </project>
