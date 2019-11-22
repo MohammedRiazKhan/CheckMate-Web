@@ -61,7 +61,7 @@ def analyse_ping(parsed_array, parsed_result, host, raw_output):
                 return "Success.", parsed_array, raw_output
             elif received == 3:
                 while count > 0:
-                    test_ping(host)
+                    perform_ping(host)
             else:
                 return "Fail.", parsed_array, raw_output
 

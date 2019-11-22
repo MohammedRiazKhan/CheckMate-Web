@@ -12,10 +12,16 @@ def hello():
 def all_tests():
     if request.method == 'POST':
         checks_to_run = request.form.getlist('checks')
-        print(len(checks_to_run))
+        endpoint = request.form['endpoint']
+
+        ping_out = []
+        trace_out = []
+        tel_out = []
+        ns_out = []
+
         for i in range(len(checks_to_run)):
             if checks_to_run[i] == 'ping':
-                print('running ping')
+                ping_out = ping.perform_ping(endpoint)
             elif checks_to_run[i] == 'traceroute':
                 print('running traceroute')
             elif checks_to_run[i] == 'nslookup':
@@ -23,35 +29,35 @@ def all_tests():
             elif checks_to_run[i] == 'telnet':
                 print('running telnet')
 
-    return jsonify('Running Tests')
+    return render_template('index.html', ping_output=ping_out)
 
 @app.route("/ping", methods=['POST'])
 def ping_host():
     if request.method == 'POST':
         endpoint = request.form['endpoint']
         output = ping.perform_ping(endpoint)
-        return render_template('index.html', output=output)
+        return render_template('index.html', ping_output=output)
 
 @app.route("/telnet", methods=['POST'])
 def telnet_host():
     if request.method == 'POST':
         endpoint = request.form['endpoint']
         output = telnet.check_if_port_open(host=endpoint, port=22)
-        return render_template('index.html', output=output)
+        return render_template('index.html', telnet_output=output)
 
 @app.route("/traceroute", methods=['POST'])
 def traceroute_host():
     if request.method == 'POST':
         endpoint = request.form['endpoint']
         output = traceroute.trace_route_of_instance(endpoint)
-        return render_template('index.html', output=output)
+        return render_template('index.html', traceroute_output=output)
 
 @app.route("/nslookup", methods=['POST'])
 def nslookup_host():
     if request.method == 'POST':
         endpoint = request.form['endpoint']
         output = nslookup.name_to_ip(endpoint)
-        return render_template('index.html', output=output)
+        return render_template('index.html', nslookup_output=output)
 
 if __name__ == '__main__':
     app.run(debug=True)
