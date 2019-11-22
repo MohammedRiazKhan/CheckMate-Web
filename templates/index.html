@@ -37,9 +37,9 @@
                 <label for="endpoint" class="card-title">Instance Endpoint or IP</label>
                 <input type="text" class="form-control" id="endpoint" placeholder="enter instance endpoint or IP" name="endpoint">
                 {% if endpoint_message %}
-                <div class="alert alert-danger" role="alert" style="margin-top: 10px">
-                    {{endpoint_message}}
-                </div>
+                    <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                        {{endpoint_message}}
+                    </div>
                 {% endif %}
             </div>
 
@@ -71,7 +71,7 @@
                 <div class="form-group" >
                   <label for="sel1">Select port to test</label>
                   <select name="port" class="form-control" id="sel1">
-                      <option> </option>
+                      <option value=""> </option>
                       <option value="22">22 - SSH</option>
                       <option value="80">80 - HTTP</option>
                       <option value="443">443 - HTTPS</option>
@@ -82,9 +82,14 @@
                       <option value="1433">1433 - MSSQL</option>
                   </select>
                 </div>
+                 {% if dropdown_message %}
+                    <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                        {{dropdown_message}}
+                    </div>
+                {% endif %}
             </div>
             <div style="margin-top: 30px">
-                <button type="submit" class="btn" onclick="unhide_progress_bar()" onsubmit="unhide_progress_bar2()" style="background-color: orange; color: white">Analyse</button>
+                <button type="submit" class="btn" onclick="unhide_progress_bar()"  style="background-color: orange; color: white">Analyse</button>
             </div>
             <div style="margin-top: 40px; display: none" id="progress_bar">
                 <p>Running test's, Please wait</p>
@@ -183,8 +188,8 @@
         {% endif %}
 
     </div>
-
 </div>
+
 <!-- Scripts -->
 <script src="../static/js/main.js"></script>
 <script src="../static/js/jquery/jquery-3.4.1.js"></script>
@@ -251,14 +256,7 @@
            }
     });
 
-
-
-    // Validate Endpoint/IP
-
-
 </script>
-
-
 
 </body>
 </html>

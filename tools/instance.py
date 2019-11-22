@@ -41,6 +41,8 @@ def determine_instance_type_by_endpoint(host):
         instance_type = 'EC2'
     elif re.search(rds_search_string, host):
         instance_type = 'RDS'
+    else:
+        instance_type = 'Not valid AWS endpoint'
 
     return instance_type
 
