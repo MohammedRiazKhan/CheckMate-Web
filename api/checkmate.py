@@ -14,14 +14,19 @@ def all_tests():
 
         checks_to_run = request.form.getlist('checks')
         endpoint = request.form['endpoint']
+        port = request.form['port']
+        port = int(port)
+        print(port)
 
+        if endpoint == '' and len(checks_to_run) == 0:
+            return render_template('index.html', endpoint_message="Please enter an IP or Endpoint",
+                                   checkbox_message="Please select at least one test to run")
         if endpoint == '':
             return render_template('index.html', endpoint_message="Please enter an IP or Endpoint")
         if not instance.valid_ip(endpoint):
             return render_template('index.html', endpoint_message="Please enter a valid IP")
         if instance.is_public_ip(endpoint):
             return render_template('index.html', endpoint_message="Please enter a valid public IP")
-
         if len(checks_to_run) == 0:
             return render_template('index.html', checkbox_message="Please select at least one test to run")
 
@@ -38,8 +43,9 @@ def all_tests():
             elif checks_to_run[i] == 'nslookup':
                 ns_out = nslookup.name_to_ip(endpoint)
             elif checks_to_run[i] == 'telnet':
-                tel_out = telnet.check_if_port_open(host=endpoint, port=22)
+                tel_out = telnet.check_if_port_open(host=endpoint, port=port)
 
+    print(tel_out)
     return render_template('index.html', ping_output=ping_out, telnet_output=tel_out, traceroute_output=trace_out, nslookup_output=ns_out)
 
 @app.route("/ping", methods=['POST'])

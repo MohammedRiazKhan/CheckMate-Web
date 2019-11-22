@@ -32,7 +32,7 @@
 
     <div class="row card" style="padding: 30px">
         <!-- Form -->
-        <form action="/run" method="POST">
+        <form action="/run"  method="post" id="checkmate-form">
             <div class="form-group">
                 <label for="endpoint" class="card-title">Instance Endpoint or IP</label>
                 <input type="text" class="form-control" id="endpoint" placeholder="enter instance endpoint or IP" name="endpoint">
@@ -70,25 +70,26 @@
             <div id="port_numbers" class="form-group" style="display: none; margin-top: 20px">
                 <div class="form-group" >
                   <label for="sel1">Select port to test</label>
-                  <select class="form-control" id="sel1">
-                      <option>22 - SSH</option>
-                      <option>80 - HTTP</option>
-                      <option>443 - HTTPS</option>
-                      <option>3389 - RDP</option>
-                      <option>3306 - MySQL/Aurora</option>
-                      <option>5432 - Postgres</option>
-                      <option>1521 - Oracle</option>
-                      <option>1433 - MSSQL</option>
+                  <select name="port" class="form-control" id="sel1">
+                      <option> </option>
+                      <option value="22">22 - SSH</option>
+                      <option value="80">80 - HTTP</option>
+                      <option value="443">443 - HTTPS</option>
+                      <option value="3389">3389 - RDP</option>
+                      <option value="3306">3306 - MySQL/Aurora</option>
+                      <option value="5432">5432 - Postgres</option>
+                      <option value="1521">1521 - Oracle</option>
+                      <option value="1433">1433 - MSSQL</option>
                   </select>
                 </div>
             </div>
             <div style="margin-top: 30px">
-                <button type="submit" class="btn" onclick="unhide_progress_bar()" style="background-color: orange; color: white">Analyse</button>
+                <button type="submit" class="btn" onclick="unhide_progress_bar()" onsubmit="unhide_progress_bar2()" style="background-color: orange; color: white">Analyse</button>
             </div>
             <div style="margin-top: 40px; display: none" id="progress_bar">
-                 <p>Running test 1 of x</p>
+                <p>Running test's, Please wait</p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:0%; background-color: orange !important"></div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color: orange !important"></div>
                 </div>
             </div>
         </form>
@@ -184,8 +185,12 @@
     </div>
 
 </div>
-
+<!-- Scripts -->
+<script src="../static/js/main.js"></script>
+<script src="../static/js/jquery/jquery-3.4.1.js"></script>
+<script src="../static/js/bootstrap/bootstrap.js"></script>
 <script>
+
     checkbox = document.getElementById('telnet');
 
     checkbox.addEventListener('change', e => {
@@ -200,9 +205,12 @@
     });
 
     function unhide_progress_bar() {
-        document.getElementById('progress_bar').style.display = 'block'
-    }
 
+        if(document.getElementById('endpoint').value !== ''){
+            document.getElementById('progress_bar').style.display = 'block'
+        }
+
+    }
 
     ping_expand = document.getElementById('expand_ping_output');
 
@@ -250,10 +258,7 @@
 
 </script>
 
-<!-- Scripts -->
-<script src="../static/js/main.js"></script>
-<script src="../static/js/jquery/jquery-3.4.1.js"></script>
-<script src="../static/js/bootstrap/bootstrap.js"></script>
+
 
 </body>
 </html>
