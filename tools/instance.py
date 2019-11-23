@@ -1,6 +1,6 @@
 import re
 import ipaddress
-from tools.nslookup import instance_nslookup as nslookup
+from tools import nslookup
 
 def determine_if_ip_or_endpoint(host):
 
@@ -41,6 +41,8 @@ def determine_instance_type_by_endpoint(host):
         instance_type = 'EC2'
     elif re.search(rds_search_string, host):
         instance_type = 'RDS'
+    else:
+        instance_type = 'Not valid AWS endpoint'
 
     return instance_type
 
