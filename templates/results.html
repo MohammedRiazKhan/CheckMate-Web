@@ -102,15 +102,62 @@
 
         <!--Traceroute -->
         {%if traceroute_output %}
-        <div class="card row" style="padding: 30px; margin-top: 10px">
-            <label style="font-weight: bold">Traceroute</label>
-            <p>Result: Pass</p>
-        </div>
-        {% endif %}
-        <div class="card-body">
-            <!-- To be continued    -->
+            <div class="card row" style="padding: 30px; margin-top: 10px">
+                <label style="font-weight: bold">Traceroute</label>
+    <!--            <p>Result: Pass</p>-->
+                {% if traceroute_output[0] == 1 %}
+                    <div class="alert alert-success" role="alert">Traceroute Successful</div>
+                {% endif%}
 
-        </div>
+                {% if traceroute_output[0] == 0 %}
+                  <div class="alert alert-danger" role="alert">{{traceroute_output[1]}}</div>
+                {% endif %}
+
+                {% if traceroute_output[0] != 1 %}
+                  <div class="card-header alert alert-info" role="alert">
+                    <label style="float: left">Recommendations</label>
+                    <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_traceroute_recommendations"></i>
+                  </div>
+                    <div id="traceroute_recommendations" style="margin-top: -15px">
+                       {% if traceroute_output[0] == 'Reached Internet but not AWS Network' %}
+                            <div style="padding: 10px" class="card">
+                                <p>1. Make sure that the EC2 instance you are trying to connect to is in a public subnet</p>
+                                <p>2. Ensure that your Network ACL is allowing traffic for your IP</p>
+                                <p>3. Ensure that the instance is in a started state</p>
+                            </div>
+                        {% endif%}
+
+                        {% if traceroute_output[0] == 'Traceroute unsuccessful' %}
+                            <div style="padding: 10px" class="card">
+                                <p>1. Check your local firewall</p>
+                                <p>2. Ensure that your Network ACL is allowing traffic for your IP </p>
+                                <p>3. Ensure that the instance is in a started state</p>
+                                <p>4. Make sure you have an internet connection</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-header" role="alert">
+                        <label style="float: left">Test output</label>
+                        <i onclick="unhide_traceroute_output()" style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_traceroute_output"></i>
+                    </div>
+                    <div id="traceroute_results" style="display: none; padding: 10px" class="card ">
+
+                        {% for i in traceroute_output[1] %}
+                            <p>{{i}}</p>
+                        {% endfor %}
+
+                    </div>
+
+
+                {% endif %}
+
+            </div>
+        {% endif %}
+<!--        <div class="card-body">-->
+<!--            &lt;!&ndash; To be continued    &ndash;&gt;-->
+
+<!--        </div>-->
 
         <!-- Telnet -->
         {% if telnet_output %}
@@ -199,7 +246,6 @@
 <script>
 
     ping_expand = document.getElementById('expand_ping_output');
-
     if(ping_expand){
 
         ping_expand.addEventListener('click', e => {
@@ -238,6 +284,52 @@
                 document.getElementById('expand_ping_recommendations').classList.remove('fa-angle-double-down');
                 document.getElementById('expand_ping_recommendations').classList.add('fa-angle-double-up');
                 document.getElementById('ping_recommendations').style.display = "none"
+
+            }
+        });
+
+    }
+
+    traceroute_expand = document.getElementById('expand_traceroute_output');
+
+    if(traceroute_expand){
+
+        traceroute_expand.addEventListener('click', e => {
+
+            if (document.getElementById('expand_traceroute_output').classList.contains('fa-angle-double-up')) {
+
+                document.getElementById('expand_traceroute_output').classList.remove('fa-angle-double-up');
+                document.getElementById('expand_traceroute_output').classList.add('fa-angle-double-down');
+                document.getElementById('traceroute_results').style.display = "block"
+
+            } else if (document.getElementById('expand_traceroute_output').classList.contains('fa-angle-double-down')) {
+
+                document.getElementById('expand_traceroute_output').classList.remove('fa-angle-double-down');
+                document.getElementById('expand_traceroute_output').classList.add('fa-angle-double-up');
+                document.getElementById('traceroute_results').style.display = "none"
+
+            }
+        });
+    }
+
+
+    traceroute_recommend = document.getElementById('expand_traceroute_recommendations');
+
+    if(traceroute_recommend){
+
+         traceroute_recommend.addEventListener('click', e => {
+
+            if (document.getElementById('expand_traceroute_recommendations').classList.contains('fa-angle-double-up')) {
+
+                document.getElementById('expand_traceroute_recommendations').classList.remove('fa-angle-double-up');
+                document.getElementById('expand_traceroute_recommendations').classList.add('fa-angle-double-down');
+                document.getElementById('traceroute_recommendations').style.display = "block"
+
+            } else if (document.getElementById('expand_traceroute_recommendations').classList.contains('fa-angle-double-down')) {
+
+                document.getElementById('expand_traceroute_recommendations').classList.remove('fa-angle-double-down');
+                document.getElementById('expand_traceroute_recommendations').classList.add('fa-angle-double-up');
+                document.getElementById('traceroute_recommendations').style.display = "none"
 
             }
         });

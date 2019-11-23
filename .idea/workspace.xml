@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3799af7e-99a3-469f-9a5d-4509d51077da" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/checkmate.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/checkmate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,6 +131,7 @@
       <workItem from="1574445000256" duration="2582000" />
       <workItem from="1574447710376" duration="1554000" />
       <workItem from="1574488243683" duration="4752000" />
+      <workItem from="1574496971112" duration="5206000" />
     </task>
     <task id="LOCAL-00001" summary="Added Network tools">
       <created>1574326187387</created>
@@ -198,6 +197,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CheckMateAPI$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574401320476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
-    <SUITE FILE_PATH="coverage/CheckMate_Web$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574489304502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
+    <SUITE FILE_PATH="coverage/CheckMate_Web$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574500806453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
   </component>
 </project>
