@@ -94,7 +94,7 @@
 
         <!-- Ping -->
         {% if ping_output%}
-            <div class="card row" style="padding: 30px; margin-top: 10px">
+        <div class="card row" style="padding: 30px; margin-top: 10px">
             <label style="font-weight: bold">Ping</label>
              {% if ping_output[0] == 'Success.'%}
                 <div class="alert alert-success" role="alert">Pass</div>
@@ -146,20 +146,60 @@
              {% endif %}
         </div>
         {% endif %}
+<!--Ping ending  -->
 
-        <!--Traceroute -->
+        <!--Traceroute ----------------------------------->
         {%if traceroute_output %}
-            <div class="card container" style="padding: 30px; margin-top: 10px">
+            <div class="card row" style="padding: 30px; margin-top: 10px">
                 <label style="font-weight: bold">Traceroute</label>
                  <p>Result: Pass</p>
             </div>
         {% endif %}
+        <div class ="card-body">
+<!--        To be continueddddd    -->
 
+        </div>
+
+<!--    traceroute ending-------------------------------------------    -->
         <!-- Telnet -->
          {%if telnet_output %}
-             <div class="card container" style="padding: 30px; margin-top: 10px">
+             <div class="card row" style="padding: 30px; margin-top: 10px">
                  <label style="font-weight: bold">Telnet</label>
-                 <p>Result: Pass</p>
+
+                 {% if telnet_output[0] == '1' %}
+                    <div class="alert alert-danger" role="alert ">Pass</div>
+                 {% endif %}
+                 {% if telnet_output[0] != '1' %}
+                    <div class="alert alert-danger" role="alert ">{{telnet_output[0]}}</div>
+                 {% endif %}
+
+                 {% if telnet_output[0] != '1' %}
+                    <div class="card-header alert alert-info" role="alert">
+                        <label style="float: left" >Recommendations</label>
+                        <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_telnet_recommendations"></i>
+                    </div>
+                    <div id="telnet_recommendations">
+                     {% if telnet_output[0] != '1' %}
+                        <div style="padding: 10px" class="card">
+                            <p>1. Make sure the EC2 instance is publicly accessible</p>
+                            <p>2. Make sure that Security Group of your EC2 instance is allowing traffic in for the specific port</p>
+                            <p>3. Make sure the instance is in a subnet which has an IGW attached to it (if it is publicly accessible</p>
+                            <p>4. Ensure that your instance is in the Available state</p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                  <div class="card-header" role="alert">
+                    <label style="float: left">Test output</label>
+                    <i onclick="unhide_telnet_output()" style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_telnet_output"></i>
+                </div>
+                 <div id="telnet_results" style="display: none; padding: 10px" class="card ">
+
+                        {% for i in telnet_output[1] %}
+                            <p>{{i}}</p>
+                        {% endfor %}
+                </div>
+            {% endif %}
             </div>
          {% endif %}
 
@@ -167,7 +207,38 @@
         {%if nslookup_output %}
             <div class="card container" style="padding: 30px; margin-top: 10px">
                 <label style="font-weight: bold">Nslookup</label>
-                <p>Result: Pass</p>
+                    {% if nslookup_output[0] == '1'%}
+                         <div class="alert alert-success" role="alert">Valid IP</div>
+                     {% endif %}
+
+<!--                    {% if nslookup_output[0] != '1'%}-->
+<!--                        <div class="alert alert-danger" role="alert">{{nslookup_output[0] }}</div>-->
+<!--                    {% endif %}-->
+
+                    {% if nslookup_output[0] != '1'%}
+                        <div class="card-header alert alert-info" role="alert">
+                            <label style="float: left" >Recommendations</label>
+                            <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_nslookup_recommendations"></i>
+                        </div>
+                        <div id="nslookup_recommendations">
+                             {% if nslookup_output[0] == '0'%}
+                                <div style="padding: 10px" class="card">
+                                    <p>1. Be sure that you use the correct endpoint, and that you provide the endpoint in the correct format to the client you use to connect to the instance</p>
+                                </div>
+                             {% endif %}
+                        </div>
+
+                        <div class="card-header" role="alert">
+                            <label style="float: left">Test output</label>
+                            <i onclick="unhide_nslookup_output()" style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_nslookup_output"></i>
+                        </div>
+                        <div id="nslookup_results" style="display: none; padding: 10px" class="card ">
+
+                                {% for i in nslookup_output[1] %}
+                                    <p>{{i}}</p>
+                                {% endfor %}
+                        </div>
+                    {% endif %}
             </div>
         {% endif %}
 
@@ -195,7 +266,6 @@
 
 
     ping_expand = document.getElementById('expand_ping_output');
-
     ping_expand.addEventListener('click', e =>{
 
            if(document.getElementById('expand_ping_output').classList.contains('fa-angle-double-up')){
@@ -233,6 +303,81 @@
            }
     });
 
+    telnet_expand = document.getElementById('expand_telnet_output');
+    telnet_expand.addEventListener('click', e =>{
+
+           if(document.getElementById('expand_telnet_output').classList.contains('fa-angle-double-up')){
+
+               document.getElementById('expand_telnet_output').classList.remove('fa-angle-double-up');
+               document.getElementById('expand_telnet_output').classList.add('fa-angle-double-down');
+               document.getElementById('expand_telnet_output').style.display = "block"
+
+           }
+           else if(document.getElementById('expand_telnet_output').classList.contains('fa-angle-double-down')){
+
+               document.getElementById('expand_telnet_output').classList.remove('fa-angle-double-down');
+               document.getElementById('expand_telnet_output').classList.add('fa-angle-double-up');
+               document.getElementById('expand_telnet_output').style.display = "none"
+
+           }
+    });
+
+    telnet_recommend = document.getElementById('expand_telnet_recommendations');
+    telnet_recommend.addEventListener('click', e =>{
+
+         if(document.getElementById('expand_telnet_recommendations').classList.contains('fa-angle-double-up')){
+
+               document.getElementById('expand_telnet_recommendations').classList.remove('fa-angle-double-up');
+               document.getElementById('expand_telnet_recommendations').classList.add('fa-angle-double-down');
+               document.getElementById('expand_telnet_recommendations').style.display = "block"
+
+           }
+           else if(document.getElementById('expand_telnet_recommendations').classList.contains('fa-angle-double-down')){
+
+               document.getElementById('expand_telnet_recommendations').classList.remove('fa-angle-double-down');
+               document.getElementById('expand_telnet_recommendations').classList.add('fa-angle-double-up');
+               document.getElementById('expand_telnet_recommendations').style.display = "none"
+
+           }
+    });
+
+    nslookup_expand = document.getElementById('expand_nslookup_output');
+    nslookup_expand.addEventListener('click', e =>{
+
+           if(document.getElementById('expand_nslookup_output').classList.contains('fa-angle-double-up')){
+
+               document.getElementById('expand_nslookup_output').classList.remove('fa-angle-double-up');
+               document.getElementById('expand_nslookup_output').classList.add('fa-angle-double-down');
+               document.getElementById('expand_nslookup_output').style.display = "block"
+
+           }
+           else if(document.getElementById('expand_nslookup_output').classList.contains('fa-angle-double-down')){
+
+               document.getElementById('expand_nslookup_output').classList.remove('fa-angle-double-down');
+               document.getElementById('expand_nslookup_output').classList.add('fa-angle-double-up');
+               document.getElementById('expand_nslookup_output').style.display = "none"
+
+           }
+    });
+
+    nslookup_recommend = document.getElementById('expand_nslookup_recommendations');
+    nslookup_recommend.addEventListener('click', e =>{
+
+         if(document.getElementById('expand_nslookup_recommendations').classList.contains('fa-angle-double-up')){
+
+               document.getElementById('expand_nslookup_recommendations').classList.remove('fa-angle-double-up');
+               document.getElementById('expand_nslookup_recommendations').classList.add('fa-angle-double-down');
+               document.getElementById('expand_nslookup_recommendations').style.display = "block"
+
+           }
+           else if(document.getElementById('expand_nslookup_recommendations').classList.contains('fa-angle-double-down')){
+
+               document.getElementById('expand_nslookup_recommendations').classList.remove('fa-angle-double-down');
+               document.getElementById('expand_nslookup_recommendations').classList.add('fa-angle-double-up');
+               document.getElementById('expand_nslookup_recommendations').style.display = "none"
+
+           }
+    });
 
 
     // Validate Endpoint/IP
