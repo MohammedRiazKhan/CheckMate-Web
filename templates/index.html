@@ -10,7 +10,8 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap/bootstrap.css">
 
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/main.css">
 </head>
 <body style="padding: 25px">
@@ -32,10 +33,16 @@
 
     <div class="row card" style="padding: 30px">
         <!-- Form -->
-        <form action="/run" method="POST">
+        <form action="/run" method="post" id="checkmate-form">
             <div class="form-group">
                 <label for="endpoint" class="card-title">Instance Endpoint or IP</label>
-                <input type="text" class="form-control" id="endpoint" placeholder="enter instance endpoint or IP" name="endpoint">
+                <input type="text" class="form-control" id="endpoint" placeholder="enter instance endpoint or IP"
+                       name="endpoint">
+                {% if endpoint_message %}
+                <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                    {{endpoint_message}}
+                </div>
+                {% endif %}
             </div>
 
             <label style="margin-top: 20px">Select tests to perform:</label>
@@ -56,339 +63,83 @@
                     <input type="checkbox" name="checks" value="nslookup">
                     <label>nslookup</label>
                 </div>
+                {% if checkbox_message %}
+                <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                    {{checkbox_message}}
+                </div>
+                {% endif %}
             </div>
             <div id="port_numbers" class="form-group" style="display: none; margin-top: 20px">
-                <div class="form-group" >
-                  <label for="sel1">Select port to test</label>
-                  <select class="form-control" id="sel1">
-                      <option>22 - SSH</option>
-                      <option>80 - HTTP</option>
-                      <option>443 - HTTPS</option>
-                      <option>3389 - RDP</option>
-                      <option>3306 - MySQL/Aurora</option>
-                      <option>5432 - Postgres</option>
-                      <option>1521 - Oracle</option>
-                      <option>1433 - MSSQL</option>
-                  </select>
+                <div class="form-group">
+                    <label for="sel1">Select port to test</label>
+                    <select name="port" class="form-control" id="sel1">
+                        <option value="0"></option>
+                        <option value="22">22 - SSH</option>
+                        <option value="80">80 - HTTP</option>
+                        <option value="443">443 - HTTPS</option>
+                        <option value="3389">3389 - RDP</option>
+                        <option value="3306">3306 - MySQL/Aurora</option>
+                        <option value="5432">5432 - Postgres</option>
+                        <option value="1521">1521 - Oracle</option>
+                        <option value="1433">1433 - MSSQL</option>
+                    </select>
                 </div>
+                {% if dropdown_message %}
+                <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                    {{dropdown_message}}
+                </div>
+                {% endif %}
             </div>
             <div style="margin-top: 30px">
-                <button type="submit" class="btn" onclick="unhide_progress_bar()" style="background-color: orange; color: white">Analyse</button>
+                <button type="submit" class="btn" onclick="unhide_progress_bar()"
+                        style="background-color: orange; color: white">Analyse
+                </button>
             </div>
             <div style="margin-top: 40px; display: none" id="progress_bar">
-                 <p>Running test 1 of x</p>
+                <p>Running test's, Please wait</p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:0%; background-color: orange !important"></div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                         style="width:100%; background-color: orange !important"></div>
                 </div>
             </div>
         </form>
     </div>
 
-    <!-- Results Section -->
-    {% if ping_output or traceroute_output or telnet_output or nslookup_output%}
-    <div class="card-header row" style="margin-top: 50px">
-        <h5 >Test Results</h5>
-    </div>
-    {% endif%}
-    <div class="card-body">
-
-        <!-- Ping -->
-        {% if ping_output%}
-        <div class="card row" style="padding: 30px; margin-top: 10px">
-            <label style="font-weight: bold">Ping</label>
-             {% if ping_output[0] == 'Success.'%}
-                <div class="alert alert-success" role="alert">Pass</div>
-             {% endif %}
-
-             {% if ping_output[0] != 'Success.'%}
-                <div class="alert alert-danger" role="alert">{{ping_output[0] }}</div>
-             {% endif %}
-
-             {% if ping_output[0] != 'Success.'%}
-                <div class="card-header alert alert-info" role="alert">
-                    <label style="float: left" >Recommendations</label>
-                    <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_ping_recommendations"></i>
-                </div>
-                <div id="ping_recommendations">
-                     {% if ping_output[0] == 'Request timed out.'%}
-                        <div style="padding: 10px" class="card">
-                            <p>1. Check with your network administrator to determine if your network traffic allows traffic to and from the EC2 instance</p>
-                            <p>2. Check that your EC2 instance is publicly accessible and that the instance is associated with a public subnet</p>
-                        </div>
-                     {% endif %}
-
-                     {% if ping_output[0] == 'Invalid IP/EP.'%}
-                        <div style="padding: 10px" class="card">
-                            <p>1. Be sure that you use the correct endpoint, and that you provide the endpoint in the correct format to the client you use to connect to the EC2 instance.</p>
-                        </div>
-                     {% endif %}
-
-                    {% if ping_output[0] == 'Destination Host Unreachable.'%}
-                        <div style="padding: 10px" class="card">
-                            <p>1. Check with your network administrator to determine if your network traffic allows traffic to and from the EC2 instance.</p>
-                            <p>2. Your network Access Control List must allow inbound and outbound traffic </p>
-                            <p>3. Check that your security group allow inbound traffic on the the proper port: 22 for Linux and 3389 for Windows</p>
-                        </div>
-                    {% endif %}
-                </div>
-
-                <div class="card-header" role="alert">
-                    <label style="float: left">Test output</label>
-                    <i onclick="unhide_ping_output()" style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_ping_output"></i>
-                </div>
-                <div id="ping_results" style="display: none; padding: 10px" class="card ">
-
-                        {% for i in ping_output[1] %}
-                            <p>{{i}}</p>
-                        {% endfor %}
-
-                </div>
-             {% endif %}
-        </div>
-        {% endif %}
-<!--Ping ending  -->
-
-        <!--Traceroute ----------------------------------->
-        {%if traceroute_output %}
-            <div class="card row" style="padding: 30px; margin-top: 10px">
-                <label style="font-weight: bold">Traceroute</label>
-                 <p>Result: Pass</p>
-            </div>
-        {% endif %}
-        <div class ="card-body">
-<!--        To be continueddddd    -->
-
-        </div>
-
-<!--    traceroute ending-------------------------------------------    -->
-        <!-- Telnet -->
-         {%if telnet_output %}
-             <div class="card row" style="padding: 30px; margin-top: 10px">
-                 <label style="font-weight: bold">Telnet</label>
-
-                 {% if telnet_output[0] == '1' %}
-                    <div class="alert alert-danger" role="alert ">Pass</div>
-                 {% endif %}
-                 {% if telnet_output[0] != '1' %}
-                    <div class="alert alert-danger" role="alert ">{{telnet_output[0]}}</div>
-                 {% endif %}
-
-                 {% if telnet_output[0] != '1' %}
-                    <div class="card-header alert alert-info" role="alert">
-                        <label style="float: left" >Recommendations</label>
-                        <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_telnet_recommendations"></i>
-                    </div>
-                    <div id="telnet_recommendations">
-                     {% if telnet_output[0] != '1' %}
-                        <div style="padding: 10px" class="card">
-                            <p>1. Make sure the EC2 instance is publicly accessible</p>
-                            <p>2. Make sure that Security Group of your EC2 instance is allowing traffic in for the specific port</p>
-                            <p>3. Make sure the instance is in a subnet which has an IGW attached to it (if it is publicly accessible</p>
-                            <p>4. Ensure that your instance is in the Available state</p>
-                        </div>
-                        {% endif %}
-                    </div>
-
-                  <div class="card-header" role="alert">
-                    <label style="float: left">Test output</label>
-                    <i onclick="unhide_telnet_output()" style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_telnet_output"></i>
-                </div>
-                 <div id="telnet_results" style="display: none; padding: 10px" class="card ">
-
-                        {% for i in telnet_output[1] %}
-                            <p>{{i}}</p>
-                        {% endfor %}
-                </div>
-            {% endif %}
-            </div>
-         {% endif %}
-
-        <!-- Nslookup -->
-        {%if nslookup_output %}
-            <div class="card container" style="padding: 30px; margin-top: 10px">
-                <label style="font-weight: bold">Nslookup</label>
-                    {% if nslookup_output[0] == '1'%}
-                         <div class="alert alert-success" role="alert">Valid IP</div>
-                     {% endif %}
-
-<!--                    {% if nslookup_output[0] != '1'%}-->
-<!--                        <div class="alert alert-danger" role="alert">{{nslookup_output[0] }}</div>-->
-<!--                    {% endif %}-->
-
-                    {% if nslookup_output[0] != '1'%}
-                        <div class="card-header alert alert-info" role="alert">
-                            <label style="float: left" >Recommendations</label>
-                            <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_nslookup_recommendations"></i>
-                        </div>
-                        <div id="nslookup_recommendations">
-                             {% if nslookup_output[0] == '0'%}
-                                <div style="padding: 10px" class="card">
-                                    <p>1. Be sure that you use the correct endpoint, and that you provide the endpoint in the correct format to the client you use to connect to the instance</p>
-                                </div>
-                             {% endif %}
-                        </div>
-
-                        <div class="card-header" role="alert">
-                            <label style="float: left">Test output</label>
-                            <i onclick="unhide_nslookup_output()" style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_nslookup_output"></i>
-                        </div>
-                        <div id="nslookup_results" style="display: none; padding: 10px" class="card ">
-
-                                {% for i in nslookup_output[1] %}
-                                    <p>{{i}}</p>
-                                {% endfor %}
-                        </div>
-                    {% endif %}
-            </div>
-        {% endif %}
-
-    </div>
-
 </div>
 
+
 <script>
+
     checkbox = document.getElementById('telnet');
 
-    checkbox.addEventListener('change', e => {
+    if(checkbox){
+        checkbox.addEventListener('change', e => {
 
-        if(e.target.checked){
-           document.getElementById('port_numbers').style.display = "block"
-        }
-        else if(!e.target.checked) {
-             document.getElementById('port_numbers').style.display = "none"
+        if (e.target.checked) {
+            document.getElementById('port_numbers').style.display = "block"
+        } else if (!e.target.checked) {
+            document.getElementById('port_numbers').style.display = "none"
         }
 
     });
-
-    function unhide_progress_bar() {
-        document.getElementById('progress_bar').style.display = 'block'
     }
 
 
-    ping_expand = document.getElementById('expand_ping_output');
-    ping_expand.addEventListener('click', e =>{
 
-           if(document.getElementById('expand_ping_output').classList.contains('fa-angle-double-up')){
+    function unhide_progress_bar() {
 
-               document.getElementById('expand_ping_output').classList.remove('fa-angle-double-up');
-               document.getElementById('expand_ping_output').classList.add('fa-angle-double-down');
-               document.getElementById('ping_results').style.display = "block"
+        if (document.getElementById('endpoint').value !== '') {
+            document.getElementById('progress_bar').style.display = 'block'
+        }
 
-           }
-           else if(document.getElementById('expand_ping_output').classList.contains('fa-angle-double-down')){
-
-               document.getElementById('expand_ping_output').classList.remove('fa-angle-double-down');
-               document.getElementById('expand_ping_output').classList.add('fa-angle-double-up');
-               document.getElementById('ping_results').style.display = "none"
-
-           }
-    });
-
-    ping_recommend = document.getElementById('expand_ping_recommendations');
-    ping_recommend.addEventListener('click', e =>{
-
-         if(document.getElementById('expand_ping_recommendations').classList.contains('fa-angle-double-up')){
-
-               document.getElementById('expand_ping_recommendations').classList.remove('fa-angle-double-up');
-               document.getElementById('expand_ping_recommendations').classList.add('fa-angle-double-down');
-               document.getElementById('ping_recommendations').style.display = "block"
-
-           }
-           else if(document.getElementById('expand_ping_recommendations').classList.contains('fa-angle-double-down')){
-
-               document.getElementById('expand_ping_recommendations').classList.remove('fa-angle-double-down');
-               document.getElementById('expand_ping_recommendations').classList.add('fa-angle-double-up');
-               document.getElementById('ping_recommendations').style.display = "none"
-
-           }
-    });
-
-    telnet_expand = document.getElementById('expand_telnet_output');
-    telnet_expand.addEventListener('click', e =>{
-
-           if(document.getElementById('expand_telnet_output').classList.contains('fa-angle-double-up')){
-
-               document.getElementById('expand_telnet_output').classList.remove('fa-angle-double-up');
-               document.getElementById('expand_telnet_output').classList.add('fa-angle-double-down');
-               document.getElementById('expand_telnet_output').style.display = "block"
-
-           }
-           else if(document.getElementById('expand_telnet_output').classList.contains('fa-angle-double-down')){
-
-               document.getElementById('expand_telnet_output').classList.remove('fa-angle-double-down');
-               document.getElementById('expand_telnet_output').classList.add('fa-angle-double-up');
-               document.getElementById('expand_telnet_output').style.display = "none"
-
-           }
-    });
-
-    telnet_recommend = document.getElementById('expand_telnet_recommendations');
-    telnet_recommend.addEventListener('click', e =>{
-
-         if(document.getElementById('expand_telnet_recommendations').classList.contains('fa-angle-double-up')){
-
-               document.getElementById('expand_telnet_recommendations').classList.remove('fa-angle-double-up');
-               document.getElementById('expand_telnet_recommendations').classList.add('fa-angle-double-down');
-               document.getElementById('expand_telnet_recommendations').style.display = "block"
-
-           }
-           else if(document.getElementById('expand_telnet_recommendations').classList.contains('fa-angle-double-down')){
-
-               document.getElementById('expand_telnet_recommendations').classList.remove('fa-angle-double-down');
-               document.getElementById('expand_telnet_recommendations').classList.add('fa-angle-double-up');
-               document.getElementById('expand_telnet_recommendations').style.display = "none"
-
-           }
-    });
-
-    nslookup_expand = document.getElementById('expand_nslookup_output');
-    nslookup_expand.addEventListener('click', e =>{
-
-           if(document.getElementById('expand_nslookup_output').classList.contains('fa-angle-double-up')){
-
-               document.getElementById('expand_nslookup_output').classList.remove('fa-angle-double-up');
-               document.getElementById('expand_nslookup_output').classList.add('fa-angle-double-down');
-               document.getElementById('expand_nslookup_output').style.display = "block"
-
-           }
-           else if(document.getElementById('expand_nslookup_output').classList.contains('fa-angle-double-down')){
-
-               document.getElementById('expand_nslookup_output').classList.remove('fa-angle-double-down');
-               document.getElementById('expand_nslookup_output').classList.add('fa-angle-double-up');
-               document.getElementById('expand_nslookup_output').style.display = "none"
-
-           }
-    });
-
-    nslookup_recommend = document.getElementById('expand_nslookup_recommendations');
-    nslookup_recommend.addEventListener('click', e =>{
-
-         if(document.getElementById('expand_nslookup_recommendations').classList.contains('fa-angle-double-up')){
-
-               document.getElementById('expand_nslookup_recommendations').classList.remove('fa-angle-double-up');
-               document.getElementById('expand_nslookup_recommendations').classList.add('fa-angle-double-down');
-               document.getElementById('expand_nslookup_recommendations').style.display = "block"
-
-           }
-           else if(document.getElementById('expand_nslookup_recommendations').classList.contains('fa-angle-double-down')){
-
-               document.getElementById('expand_nslookup_recommendations').classList.remove('fa-angle-double-down');
-               document.getElementById('expand_nslookup_recommendations').classList.add('fa-angle-double-up');
-               document.getElementById('expand_nslookup_recommendations').style.display = "none"
-
-           }
-    });
-
-
-    // Validate Endpoint/IP
+    }
 
 
 </script>
-
 <!-- Scripts -->
 <script src="../static/js/main.js"></script>
 <script src="../static/js/jquery/jquery-3.4.1.js"></script>
 <script src="../static/js/bootstrap/bootstrap.js"></script>
-
 </body>
 </html>
