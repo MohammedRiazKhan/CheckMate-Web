@@ -21,3 +21,5 @@ def check_if_port_open(host, port):
         # close the socket.
         s.close()
 
+
+print(check_if_port_open('checkmate-mysql.czrub0mfxuvk.eu-west-2.rds.amazonaws.com', 3306))

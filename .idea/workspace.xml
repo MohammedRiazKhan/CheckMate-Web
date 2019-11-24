@@ -4,8 +4,10 @@
     <list default="true" id="3799af7e-99a3-469f-9a5d-4509d51077da" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/checkmate.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/checkmate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/instance.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/instance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/telnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/telnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/traceroute.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/traceroute.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +100,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="instance" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="telnet" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CheckMateAPI" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -111,7 +113,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/instance.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/telnet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,7 +170,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.checkmate" />
-        <item itemvalue="Python.instance" />
+        <item itemvalue="Python.telnet" />
         <item itemvalue="Python tests.Unittests for test_traceroute.TracerouteTestCase" />
         <item itemvalue="Python tests.Unittests for test_telnet.TelnetTestCase" />
         <item itemvalue="Python tests.Unittests for test_ping.PingTestCase" />
@@ -204,6 +206,7 @@
       <workItem from="1574578712709" duration="1559000" />
       <workItem from="1574580459201" duration="510000" />
       <workItem from="1574581243978" duration="5359000" />
+      <workItem from="1574586888764" duration="4307000" />
     </task>
     <task id="LOCAL-00001" summary="Added Network tools">
       <created>1574326187387</created>
@@ -304,7 +307,8 @@
     <SUITE FILE_PATH="coverage/CheckMate_Web$Unittests_for_test_telnet_TelnetTestCase.coverage" NAME="Unittests for test_telnet.TelnetTestCase Coverage Results" MODIFIED="1574581185079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/CheckMate_Web$instance.coverage" NAME="instance Coverage Results" MODIFIED="1574582396578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/CheckMate_Web$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1574581254229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
-    <SUITE FILE_PATH="coverage/CheckMate_Web$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574583562337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
+    <SUITE FILE_PATH="coverage/CheckMate_Web$telnet.coverage" NAME="telnet Coverage Results" MODIFIED="1574590986902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/CheckMate_Web$checkmate.coverage" NAME="checkmate Coverage Results" MODIFIED="1574592370747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/CheckMate_Web$Unittests_for_test_traceroute_TracerouteTestCase.coverage" NAME="Unittests for test_traceroute.TracerouteTestCase Coverage Results" MODIFIED="1574581195680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/CheckMate_Web$Unittests_for_test_ping_PingTestCase.coverage" NAME="Unittests for test_ping.PingTestCase Coverage Results" MODIFIED="1574581146953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>

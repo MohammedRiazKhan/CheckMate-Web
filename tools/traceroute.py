@@ -24,7 +24,7 @@ def parse_output(output, destination):
     before_parsing_arr = output.stdout
     before_parsing_arr = before_parsing_arr.split('\n')
     if before_parsing_arr[0] == 'Unable to resolve target system name ' + destination + '.':
-        print("Fail")
+        return 'Unable to resolve target system name ' + destination + '.', output
     else:
         parsed_arr = []
         # Loop through output array and check for spaces, then add

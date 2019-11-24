@@ -77,6 +77,9 @@ def all_tests():
                 elif checks_to_run[i] == 'telnet':
                     port = int(port)
                     tel_out = telnet.check_if_port_open(host=endpoint, port=port)
+                    print(tel_out)
+
+    print(instance_type)
 
     return render_template('results.html', ping_output=ping_out, telnet_output=tel_out,
                            traceroute_output=trace_out, nslookup_output=ns_out, port=port)

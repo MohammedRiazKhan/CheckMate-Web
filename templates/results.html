@@ -121,14 +121,14 @@
             <div class="card row" style="padding: 30px; margin-top: 10px">
                 <label style="font-weight: bold">Traceroute</label>
                 {% if traceroute_output[0] == "Traceroute Successful" %}
-                <div class="alert alert-success" role="alert">Traceroute Successful</div>
+                    <div class="alert alert-success" role="alert">Traceroute Successful</div>
                 {% endif%}
 
-                {% if traceroute_output[0] != "Traceroute unsuccessful" %}
-                <div class="alert alert-danger" role="alert">{{traceroute_output[0]}}</div>
+                {% if traceroute_output[0] != "Traceroute Successful" %}
+                    <div class="alert alert-danger" role="alert">{{traceroute_output[0]}}</div>
                 {% endif %}
 
-                {% if traceroute_output[0] != "Traceroute unsuccessful" %}
+                {% if traceroute_output[0] != "Traceroute Successful" %}
                     {% if traceroute_output[0] != 'ICMP Packets are blocked on RDS' %}
                         <div class="card-header alert alert-info" role="alert">
                             <label style="float: left">Recommendations</label>
