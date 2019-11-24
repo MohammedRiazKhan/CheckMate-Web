@@ -53,11 +53,15 @@
                 <div class="alert alert-danger" role="alert">{{ping_output[0]}}</div>
                 {% endif %}
 
-                {% if ping_output[0] != 'Success.'%}
-                <div class="card-header alert alert-info" role="alert">
-                    <label style="float: left">Recommendations</label>
-                    <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_ping_recommendations"></i>
-                </div>
+                {% if ping_output[0] != 'Success.' %}
+                    {% if ping_output[0] != 'ICMP Packets are blocked on RDS' %}
+                        <div class="card-header alert alert-info" role="alert">
+
+                        <label style="float: left">Recommendations</label>
+                        <i style="float: right" class="fa fa-2x fa-angle-double-down" id="expand_ping_recommendations"></i>
+
+                    </div>
+                    {% endif %}
                 <div id="ping_recommendations" style="margin-top: -15px">
                     {% if ping_output[0] == 'Request timed out.'%}
                     <div style="padding: 10px" class="card">
@@ -89,13 +93,18 @@
                             3389 for Windows</p>
                     </div>
                     {% endif %}
+
+
+
                 </div>
 
+                {% if ping_output[0] != 'ICMP Packets are blocked on RDS' %}
                 <div class="card-header" role="alert">
                     <label style="float: left">Test output (raw)</label>
                     <i style="float: right" class="fa fa-2x fa-angle-double-up"
                        id="expand_ping_output"></i>
                 </div>
+                {% endif %}
                 <div id="ping_results" style="display: none; padding: 10px" class="card ">
 
                     {% for i in ping_output[1] %}
@@ -115,18 +124,18 @@
                 <div class="alert alert-success" role="alert">Traceroute Successful</div>
                 {% endif%}
 
-                {% if traceroute_output[0] == "Traceroute unsuccessful" or traceroute_output[0] == "Reached Internet but
-                not AWS Network" %}
+                {% if traceroute_output[0] != "Traceroute unsuccessful" %}
                 <div class="alert alert-danger" role="alert">{{traceroute_output[0]}}</div>
                 {% endif %}
 
-                {% if traceroute_output[0] == "Traceroute unsuccessful" or traceroute_output[0] == "Reached Internet but
-                not AWS Network" %}
-                <div class="card-header alert alert-info" role="alert">
-                    <label style="float: left">Recommendations</label>
-                    <i style="float: right" class="fa fa-2x fa-angle-double-down"
-                       id="expand_traceroute_recommendations"></i>
-                </div>
+                {% if traceroute_output[0] != "Traceroute unsuccessful" %}
+                    {% if traceroute_output[0] != 'ICMP Packets are blocked on RDS' %}
+                        <div class="card-header alert alert-info" role="alert">
+                            <label style="float: left">Recommendations</label>
+                            <i style="float: right" class="fa fa-2x fa-angle-double-down"
+                               id="expand_traceroute_recommendations"></i>
+                        </div>
+                    {% endif %}
                 <div id="traceroute_recommendations" style="margin-top: -15px">
                     {% if traceroute_output[0] == 'Reached Internet but not AWS Network' %}
                     <div style="padding: 10px" class="card">
@@ -146,10 +155,12 @@
                     {% endif %}
                 </div>
 
-                <div class="card-header" role="alert">
-                    <label style="float: left">Test output (raw)</label>
-                    <i style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_traceroute_output"></i>
-                </div>
+                {% if traceroute_output[0] != 'ICMP Packets are blocked on RDS' %}
+                    <div class="card-header" role="alert">
+                        <label style="float: left">Test output (raw)</label>
+                        <i style="float: right" class="fa fa-2x fa-angle-double-up" id="expand_traceroute_output"></i>
+                    </div>
+                {% endif %}
                 <div id="traceroute_results" style="display: none; padding: 10px" class="card ">
 
                     {% for i in traceroute_output[1] %}

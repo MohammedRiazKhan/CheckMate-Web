@@ -8,10 +8,13 @@ def determine_if_ip_or_endpoint(host):
     rds_search_string = 'rds.amazonaws.com'
 
     if valid_ip(host):
-        return "IP"
-    if re.search(ec2_search_string, host) or re.search(rds_search_string, host):
+        if is_public_ip(host):
+            return "IP"
+        else:
+            return "Private IP"
+    elif re.search(ec2_search_string, host) or re.search(rds_search_string, host):
         return "Endpoint"
-    if not valid_ip(host):
+    elif not valid_ip(host):
         return "Invalid IP"
 
 def valid_ip(ip):
@@ -22,6 +25,7 @@ def valid_ip(ip):
         return False
 
 def determine_instance_type_by_endpoint(host):
+
     instance_type = ''
     ec2_search_string = 'compute.amazonaws.com'
     rds_search_string = 'rds.amazonaws.com'
@@ -42,10 +46,9 @@ def determine_instance_type_by_endpoint(host):
     elif re.search(rds_search_string, host):
         instance_type = 'RDS'
     else:
-        instance_type = 'Not valid AWS endpoint'
+        instance_type = 'Not a valid AWS resource'
 
     return instance_type
-
 
 def determine_instance_type_by_ip(host):
 
@@ -54,9 +57,11 @@ def determine_instance_type_by_ip(host):
     # Pass into this
     return determine_instance_type_by_endpoint(endpoint)
 
-
 def is_public_ip(ip):
     if not ipaddress.ip_address(ip).is_private:
         return True
     else:
         return False
+
+
+print(determine_if_ip_or_endpoint('192.168.1.0'))
