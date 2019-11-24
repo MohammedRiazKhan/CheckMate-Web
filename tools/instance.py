@@ -60,6 +60,3 @@ def is_public_ip(ip):
         return True
     else:
         return False
-
-
-
