@@ -3,12 +3,10 @@ from tools import ping, telnet, traceroute, nslookup, instance
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
-
 # Home Page
 @app.route("/")
 def home():
     return render_template('index.html')
-
 
 @app.route("/run", methods=['POST'])
 def all_tests():
@@ -41,11 +39,16 @@ def all_tests():
         elif instance.determine_if_ip_or_endpoint(endpoint) == 'Endpoint':
             instance_type = instance.determine_instance_type_by_endpoint(endpoint)
 
-        elif instance.determine_if_ip_or_endpoint(endpoint) == 'Private IP':
-            return render_template('index.html', endpoint_message="Please enter a valid public IP")
+        elif instance.determine_if_ip_or_endpoint(endpoint) == 'Custom Endpoint':
+            print('Custom endo')
+            instance_type = instance.determine_instance_type_by_endpoint(endpoint)
 
+        elif instance.determine_if_ip_or_endpoint(endpoint) == 'Invalid Endpoint':
+            return render_template('index.html', endpoint_message="Please enter a valid endpoint")
+        elif instance.determine_if_ip_or_endpoint(endpoint) == 'Private IP':
+            return render_template('index.html', endpoint_message="Please enter a public IP")
         elif instance.determine_if_ip_or_endpoint(endpoint) == 'Invalid IP':
-            return render_template('index.html', endpoint_message="Please enter a valid IP or endpoint")
+            return render_template('index.html', endpoint_message="Please enter a valid IP")
 
         ping_out = []
         trace_out = []

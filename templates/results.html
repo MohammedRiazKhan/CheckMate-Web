@@ -65,12 +65,12 @@
                 <div id="ping_recommendations" style="margin-top: -15px">
                     {% if ping_output[0] == 'Request timed out.'%}
                     <div style="padding: 10px" class="card">
-                        <p>1. Check with your network administrator to determine if your network traffic allows traffic
-                            to
-                            and from the EC2 instance</p>
-                        <p>2. Check that your EC2 instance is publicly accessible and that the instance is associated
-                            with a
-                            public subnet</p>
+                        <p>1. Verify that the instance is in an on state</p>
+                        <p>2. Ensure that ICMP packets are enabled in your security</p>
+                        <p>3. Verify that your instance it is associated with a public subnet</p>
+                        <p>4. Ensure that the endpoint or IP is correct</p>
+                        <p>For more information, visit this <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">link</a></p>
+
                     </div>
                     {% endif %}
 
@@ -91,6 +91,11 @@
                         <p>3. Check that your security group allow inbound traffic on the the proper port: 22 for Linux
                             and
                             3389 for Windows</p>
+                        <p>4. Verify that the instance is in an on state</p>
+                        <p>5. Ensure that ICMP packets are enabled in your security</p>
+                        <p>6. Verify that your instance it is associated with a public subnet</p>
+
+                        <p>For more information, visit this <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html">link</a></p>
                     </div>
                     {% endif %}
 
@@ -108,7 +113,7 @@
                 <div id="ping_results" style="display: none; padding: 10px" class="card ">
 
                     {% for i in ping_output[1] %}
-                    <p>{{i}}</p>
+                        <p>{{i}}</p>
                     {% endfor %}
 
                 </div>
@@ -148,9 +153,10 @@
                     {% if traceroute_output[0] == 'Traceroute unsuccessful' %}
                     <div style="padding: 10px" class="card">
                         <p>1. Check your local firewall</p>
-                        <p>2. Ensure that your Network ACL is allowing traffic for your IP </p>
-                        <p>3. Ensure that the instance is in a started state</p>
-                        <p>4. Make sure you have an internet connection</p>
+                        <p>2. Check the security group and ensure ICMP packets are allowed </p>
+                        <p>3. Ensure that your Network ACL is allowing traffic for your IP </p>
+                        <p>4. Ensure that the instance is in a started state</p>
+                        <p>5. Make sure you have an internet connection</p>
                     </div>
                     {% endif %}
                 </div>

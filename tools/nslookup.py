@@ -39,6 +39,7 @@ def name_to_ip(address):
 
     return 0, "Cannot find " + address + ", Non-existent domain"
 
+
 def ip_to_name(ip_addr):
 
     command = 'nslookup'
