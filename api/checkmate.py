@@ -24,7 +24,6 @@ def all_tests():
             return render_template('index.html', endpoint_message="Please enter an IP or Endpoint",
                                    checkbox_message="Please select at least one test to run",
                                    dropdown_message="Please select a port to test")
-
         if endpoint == '':
             return render_template('index.html', endpoint_message="Please enter an IP or Endpoint")
         if len(checks_to_run) == 0:
