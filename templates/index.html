@@ -50,15 +50,15 @@
 
             <label style="margin-top: 20px">Select tests to perform:</label>
             <div class="form-group form-check">
-                <div style="float: left; margin-left: 5px">
+                <div style="float: left; margin-left: 5px" id="ping_div">
                     <input type="checkbox" name="checks" value="ping" id="ping">
                     <label  data-toggle="tooltip" data-placement="bottom"  title="Verify if your EC2 instance is reachable over the internet ">ping</label>
                 </div>
-                <div style="float: left; margin-left: 20px">
+                <div style="float: left; margin-left: 20px" id="traceroute_div">
                     <input type="checkbox" name="checks" value="traceroute" id="traceroute">
                     <label data-toggle="tooltip" data-placement="bottom" data-html="true" title="Verify if your connection reaches the internet or reaches the AWS network ">traceroute</label>
                 </div>
-                <div style="float: left; margin-left: 20px; margin-right: 20px">
+                <div style="float: left; margin-left: 20px; margin-right: 20px" id="telnet_div">
                     <input type="checkbox" name="checks" value="telnet" id="telnet">
                     <label data-toggle="tooltip" data-placement="bottom" title="Verify if the destination port is allowing traffic in ">telnet</label>
                 </div>
@@ -142,6 +142,25 @@
         }
 
     }
+
+    endpoint = document.getElementById('endpoint')
+    endpoint.addEventListener('input', e =>{
+
+        let value_in_input = document.getElementById('endpoint').value;
+
+        if(value_in_input.includes('rds.amazonaws.com')){
+            document.getElementById('ping_div').style.display = 'none';
+            document.getElementById('traceroute_div').style.display = 'none';
+            document.getElementById('telnet_div').style.marginLeft = '0px'
+        }
+        else {
+            document.getElementById('ping_div').style.display = 'block';
+            document.getElementById('traceroute_div').style.display = 'block';
+            document.getElementById('telnet_div').style.marginLeft = '20px';
+        }
+
+
+    });
 
 
 </script>
