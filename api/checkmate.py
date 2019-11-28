@@ -65,6 +65,7 @@ def all_tests():
                     trace_out = traceroute.trace_route_of_instance(endpoint)
                 elif checks_to_run[i] == 'nslookup':
                     ns_out = nslookup.name_to_ip(endpoint)
+                    print(ns_out)
                 elif checks_to_run[i] == 'telnet':
                     port = int(port)
                     tel_out = telnet.check_if_port_open(host=endpoint, port=port)
@@ -76,6 +77,7 @@ def all_tests():
                     trace_out = ['ICMP Packets are blocked on RDS', ['ICMP Packets are blocked on RDS'], ['ICMP Packets are blocked on RDS']]
                 elif checks_to_run[i] == 'nslookup':
                     ns_out = nslookup.name_to_ip(endpoint)
+                    print(ns_out)
                 elif checks_to_run[i] == 'telnet':
                     port = int(port)
                     tel_out = telnet.check_if_port_open(host=endpoint, port=port)
