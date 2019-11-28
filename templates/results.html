@@ -22,19 +22,22 @@
     <!-- Header Section -->
     <div class="row">
         <!-- Logo -->
-        <div style="float: left">
-            <a href="{{ url_for('home')}}"><img src="../static/images/aws_logo.png" alt="aws_forums_logo" width="300px"
-                                                height="150px"/></a>
+        <div style="float: left; margin-left: 100px">
+            <img src="../static/images/aws_logo.png" alt="aws_forums_logo" width="300px" height="150px"/>
         </div>
-        <div style="float: left; margin-top: 50px">
+        <div style="float: right; margin-top: 50px">
             <h3>AWS Forums - EC2 & RDS Sanity Check </h3>
             <p style="color: gray">A sanity check to help diagnose common issues with your EC2 & RDS instances.</p>
         </div>
     </div>
-
+    <div style="float: left; " >
+       <a href="{{url_for('home')}}"><i class ="fa fa-2x fa-home" style="background-color: white; color: black"></i></a>
+    </div>
     <div>
         <!-- Results Section -->
         {% if ping_output or traceroute_output or telnet_output or nslookup_output%}
+
+
         <div class="card-header row" style="margin-top: 50px">
             <h5>Test Results</h5>
         </div>
